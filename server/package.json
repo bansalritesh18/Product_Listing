@@ -1,0 +1,9 @@
+{
+  "name": "product-lising",
+  "version": "1.0.0",
+  "devDependencies": {
+    "express": "^4.13.4",
+    "mongodb": "^2.2.5",
+    "q": "^1.4.1"
+  }
+}

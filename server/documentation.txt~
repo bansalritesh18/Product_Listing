@@ -1,0 +1,7 @@
+Prerequisites :
+Node and mongo should be installed on the system.
+
+Steps :
+1. In terminal, go to the server directory and run "npm install".
+2. For insering data, run "mongoimport --db productListingSample --collection products --type json --file data.json --jsonArray".
+3. For running server, run "node server.js".

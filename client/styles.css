@@ -1,0 +1,25 @@
+
+body {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    font-family: helvetica, sans-serif, calibri;
+    -webkit-user-select: none;
+    overflow: hidden;
+}
+
+#root {
+    display: flex;
+    flex: 1
+}
+.rows {
+	flex:1;
+	overflow:auto
+}
+
+.rowStyle {
+	height:100px;
+	border:1px solid black
+}
