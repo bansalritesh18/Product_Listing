@@ -1,6 +1,0 @@
-Note : Step 2,3 is for development phase (not for production).
-
-Steps :
-1. In terminal, go to the cglient directory and run "npm install".
-2. Then in client directory, run "npm run serve-web".
-3. Then go into the web browser and hit url "http://localhost:3000/".

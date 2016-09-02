@@ -3,5 +3,9 @@ Node and mongo should be installed on the system.
 
 Steps :
 1. In terminal, go to the server directory and run "npm install".
-2. For inserting data, In terminal, go to the server directory and run "mongoimport --db productListingSample --collection products --type json --file data.json --jsonArray".
-3. For running server, run "node server.js".
+2. Connect to local mongo (on port 27017 as per config file) in terminal, and run following commands :
+    use productListingSample
+    db.dropDatabase()
+3. For inserting data, In terminal, go to the server directory and run "mongoimport --db productListingSample --collection products --type json --file data.json --jsonArray".
+4. For running server, run "node server.js".
+5. In Browser, hit the url : "http://127.0.0.1:5000".

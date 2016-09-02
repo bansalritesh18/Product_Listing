@@ -1,13 +1,12 @@
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
 var db = undefined;
+var Config = require("./Config");
 var Q = require("q");
-var host = "127.0.0.1";
-var port = "27017";
-var dbName = "productListingSample";
 
 var table = "products";
 //mongoimport --db productListingSample --collection products --type json --file data.json --jsonArray
+
 
 exports.connectToDatabase = function () {
     if (db) {
@@ -15,7 +14,7 @@ exports.connectToDatabase = function () {
         d.resolve(db);
         return d.promise;
     }
-    var url = "mongodb://" + host + ":" + port + "/" + dbName;
+    var url = "mongodb://" + Config.host + ":" + Config.port + "/" + Config.dbName;
     return connectToMongo(url).then(function (dbInstance) {
         db = dbInstance;
         return db;
