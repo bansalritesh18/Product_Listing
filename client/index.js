@@ -4,7 +4,8 @@ import List from "./List.js";
 import Captcha from "./Captcha.js"
 import {fetchData} from "./Api.js";
 
-var url = "http://127.0.0.1:5000";
+//var url = "http://127.0.0.1:5000";
+var url = "";
 
 class Root extends React.Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class Root extends React.Component {
     }
 
     verifyCaptcha() {
-        fetchData(`${url}/verifyCaptcha`, {captcha: this.state.inputValue}).then((result)=> {
+        fetchData(`/verifyCaptcha`, {captcha: this.state.inputValue}).then((result)=> {
             if (result && result.isUserVerified) {
                 localStorage.setItem("isUserVerified", "true");
                 this.setState({isUserVerified: true});
