@@ -36,14 +36,29 @@ class Root extends React.Component {
                 <List />
             )
         } else {
+            var style = {
+                display: "flex",
+                flexDirection: "column",
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center"
+            };
             return (
-                <div>
-                    <input type="text" onChange={(e)=>{this.state.inputValue = e.target.value}}/>
+                <div style={style}>
+                    <div style={{borderWidth:1}}>
+                        <div className="shadow">
+                            <div>
+                                <input placeholder={"Enter Captcha"} className="inputTag" type="text"
+                                       onChange={(e)=>{this.state.inputValue = e.target.value}}/>
+                            </div>
+                            {this.state.error && <div className="error">{this.state.error.message}</div>}
 
-                    <Captcha onReload={this.onReloadCaptcha} url={url}/>
+                            <Captcha onReload={this.onReloadCaptcha} url={url}/>
 
-                    <div onClick={this.verifyCaptcha}>Verify Captcha</div>
-                    {this.state.error && <div className="error">{this.state.error.message}</div>}
+                            <div onClick={this.verifyCaptcha} className="verifyCaptcha">Verify Captcha</div>
+
+                        </div>
+                    </div>
                 </div>
             )
         }

@@ -20,17 +20,17 @@ export default class Captcha extends React.Component {
         this.setState({}, ()=> {
             this.props.onReload();
         });
-
     }
 
     render() {
-        var imageURL = `${this.props.url}/captcha?random=${Math.random()}`;
+        var imageURL = `${this.props.url}/captcha?random=${new Date().getTime()}`;
         return (
-            <div>
+            <div className="captchaContainer">
                 <img src={imageURL}/>
 
-                <div onClick={this.onClick}>Reload Captcha</div>
-
+                <div onClick={this.onClick} style={{marginLeft:15}}>
+                    <img src={"./images/reload.jpg"} className="reload"/>
+                </div>
             </div>
         )
     }

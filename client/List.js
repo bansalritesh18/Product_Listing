@@ -4,7 +4,7 @@ import {fetchData} from "./Api.js";
 export default class List extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {loaded: false, hasMoreData: true};
+        this.state = {skip: 0, limit: 20, loaded: false, hasMoreData: true};
         this.renderRow = this.renderRow.bind(this);
         this.onScroll = this.onScroll.bind(this);
     }
@@ -16,8 +16,6 @@ export default class List extends React.Component {
         var {scrollTop,scrollHeight,clientHeight} = event.target;
         if ((scrollHeight * (80 / 100) <= scrollTop) || (scrollTop >= scrollHeight - clientHeight - 200)) {
             this.setState({fetchingMoreData: true});
-            this.state.limit = 20;
-            this.state.skip = this.state.skip || 20;
             this.state.skip = this.state.skip + this.state.limit;
             this.fetchData({skip: this.state.skip, limit: this.state.limit});
         }
@@ -49,12 +47,13 @@ export default class List extends React.Component {
     }
 
     componentDidMount() {
-        this.fetchData();
+        this.fetchData({skip: this.state.skip, limit: this.state.limit});
     }
 
     renderRow(row, index) {
         return (
-            <div key={`row_`+index} ref={(ref)=>{this.listRef = ref;}} className="rowStyle">
+            <div key={`row_`+index} ref={(ref)=>{this.listRef = ref;}}
+                 className="rowStyle">
                 <div>{row.model}</div>
                 <div>{row.price}</div>
                 <div>{row.description}</div>
